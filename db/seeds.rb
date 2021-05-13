@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+zero = Phone.new(name: "iphone", model: "XR", price: 199)
+zero.description = Description.new(content: "cool phone, bro!")
+zero.rating = Rating.new(number: 3)
