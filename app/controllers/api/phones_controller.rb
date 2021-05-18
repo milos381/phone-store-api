@@ -1,9 +1,11 @@
+
 class Api::PhonesController<ApplicationController
     
     def index
         render json: Phone.all
     end
     def create
+        
         phone = Phone.new(phone_params)
         if phone.save
             render json: phone
