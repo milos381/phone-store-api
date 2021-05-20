@@ -5,4 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-zeek = Phone.new(name: "iphone", model: "XR", price: 199)
+zeek = Phone.create(make: "iphone", model: "XR", price: 199)

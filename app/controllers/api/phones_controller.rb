@@ -29,7 +29,8 @@ class Api::PhonesController<ApplicationController
     def destroy 
         phone = Phone.find_by(id: params[:id])
         if phone.destroy
-          render status: 204
+          render json: phone, status: :ok
+
         else 
           render json: { message: "Unable to delete this phone" }, status: 400
         end 
@@ -37,6 +38,6 @@ class Api::PhonesController<ApplicationController
     private
 
     def phone_params
-        params.require(:phone).permit(:name, :model, :price, :img_url)
+        params.require(:phone).permit(:make, :model, :price, :img_url)
     end
 end
