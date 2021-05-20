@@ -1,0 +1,3 @@
+class Ipad < ApplicationRecord
+
+end
