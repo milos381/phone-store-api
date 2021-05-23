@@ -19,8 +19,7 @@ class Api::UsersController < ApplicationController
     # POST /users
     def create
       @user = User.new(user_params)
-  
-      @user.hometown = @location
+
       if @user.save
         session[:user_id] = @user.id
         render json: UserSerializer.new(@user), status: :created
