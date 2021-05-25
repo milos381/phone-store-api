@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  post "/api/login", to: "api/sessions#create"
-  post "/api/signup", to: "api/users#create"
-  delete "/api/logout", to: "api/sessions#destroy"
-  get "/api/get_current_user", to: "api/sessions#get_current_user"
+  # post '/login', to: 'sessions#create'
+  # delete '/logout', to: 'sessions#destroy'
+  # get '/logged_in', to: 'sessions#is_logged_in?'
   namespace :api do
     resources :phones, except: :edit
     resources :macbooks, except: :edit
     resources :ipads, except: :edit
-    resources :users, except: :edit
+    # resources :users, except: :edit
   end
  
 end

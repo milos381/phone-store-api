@@ -1,44 +1,49 @@
-class Api::UsersController < ApplicationController
-    before_action :set_user, only: [:show, :update, :destroy]
-    #
-    # GET /users
-    def index
-      @users = User.all
+# class Api::UsersController < ApplicationController
+#   def index
+#     @users = User.all
+#     if @users
+#       render json: {
+#         users: @users
+#       }
+#     else
+#       render json: {
+#         status: 500,
+#         errors: ['no users found']
+#       }
+#     end
+# end
+# def show
+#     @user = User.find(params[:id])
+#    if @user
+#       render json: {
+#         user: @user
+#       }
+#     else
+#       render json: {
+#         status: 500,
+#         errors: ['user not found']
+#       }
+#     end
+#   end
   
-      render json: @users
-    end
+#   def create
+#     @user = User.new(user_params)
+#     if @user.save
+#       login!
+#       render json: {
+#         status: :created,
+#         user: @user
+#       }
+#     else 
+#       render json: {
+#         status: 500,
+#         errors: @user.errors.full_messages
+#       }
+#     end
+#   end
+# private
   
-    # GET /users/1
-    def show
-      #render json: @user
-      # json_string = MovieSerializer.new(movie).serialized_json
-      user_json = UserSerializer.new(@user).serialized_json
-      render json: user_json
-    end
-  
-    # POST /users
-    def create
-      @user = User.new(user_params)
-
-      if @user.save
-        session[:user_id] = @user.id
-        render json: UserSerializer.new(@user), status: :created
-      else
-        resp = {
-          error: @user.errors.full_messages.to_sentence
-        }
-        render json: resp, status: :unprocessable_entity
-      end
-    end
-  
-    private
-      # Use callbacks to share common setup or constraints between actions.
-      def set_user
-        @user = User.find(params[:id])
-      end
-  
-      # Only allow a trusted parameter "white list" through.
-      def user_params
-        params.require(:user).permit(:name, :username, :password)
-      end
-  end
+#   def user_params
+#     params.require(:user).permit(:username, :email, :password, :password_confirmation)
+#   end
+# end

@@ -1,32 +1,43 @@
-class Api::SessionsController < ApplicationController
-    def create
-      @user = User.find_by(username: params[:session][:username])
+# class Api::SessionsController < ApplicationController
+#   def create
+#     @user = User.find_by(email: session_params[:email])
   
-      if @user && @user.authenticate(params[:session][:password])
-        session[:user_id] = @user.id
-        render json: UserSerializer.new(@user), status: :ok
-      else
-        render json: {
-          error: "Error: Invalid Credentials"
-        }
-      end
-    end
-  
-    def get_current_user
-      if logged_in?
-        render json: UserSerializer.new(current_user)
-      else
-        render json: {
-          error: "Error: No one logged in"
-        }
-      end
-    end
-  
-    def destroy
-      session.clear
-      render json: {
-        notice: "Sucess!"
-      }, status: :ok
-    end
-  
-  end
+#     if @user && @user.authenticate(session_params[:password])
+#       login!
+#       render json: {
+#         logged_in: true,
+#         user: @user
+#       }
+#     else
+#       render json: { 
+#         status: 401,
+#         errors: ['no such user', 'verify credentials and try again or signup']
+#       }
+#     end
+#   end
+# def is_logged_in?
+#     if logged_in? && current_user
+#       render json: {
+#         logged_in: true,
+#         user: current_user
+#       }
+#     else
+#       render json: {
+#         logged_in: false,
+#         message: 'no such user'
+#       }
+#     end
+#   end
+# def destroy
+#     logout!
+#     render json: {
+#       status: 200,
+#       logged_out: true
+#     }
+#   end
+# private
+# def session_params
+#     params.require(:user).permit(:username, :email, :password)
+#   end
+
+# end
